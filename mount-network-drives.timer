@@ -1,0 +1,11 @@
+[Unit]
+Description=Periodically mount Windows network drives into WSL
+
+[Timer]
+OnBootSec=10s
+OnUnitActiveSec=5min
+AccuracySec=30s
+Persistent=false
+
+[Install]
+WantedBy=timers.target

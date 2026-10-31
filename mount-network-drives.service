@@ -1,0 +1,12 @@
+[Unit]
+Description=Mount Windows network drives into WSL
+After=local-fs.target
+Wants=local-fs.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/mount-network-drives
+Nice=10
+
+[Install]
+WantedBy=multi-user.target
