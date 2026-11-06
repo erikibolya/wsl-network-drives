@@ -1,0 +1,17 @@
+name: ci
+
+on:
+  push:
+    branches: [dev, main]
+  pull_request:
+    branches: [dev, main]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Bash syntax
+        run: find . -name '*.sh' -not -path './.git/*' -print0 | xargs -0 -r -n1 bash -n
+      - name: ShellCheck
+        run: find . -name '*.sh' -not -path './.git/*' -print0 | xargs -0 -r shellcheck -S error
